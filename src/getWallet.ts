@@ -1,4 +1,4 @@
-import { ethers } from '../ethers-5.2.esm.min.js'
+import { ethers } from '../lib/ethers-v5.6.2.esm.js'
 
 export function getWallet(text: string) {
   if (!text) {
