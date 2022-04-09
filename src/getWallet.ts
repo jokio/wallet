@@ -12,6 +12,7 @@ export function getWallet(text: string) {
     const key = new ethers.utils.SigningKey(seed)
 
     return {
+      secretPhrase: text,
       privateKey: (key as any).privateKey,
       address: ethers.utils.computeAddress((key as any).publicKey),
     }
