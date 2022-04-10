@@ -87,6 +87,17 @@
         text-decoration: underline;
       }
 
+      .panel {
+        display: flex;
+        align-items: center;
+      }
+
+      .panel .info {
+        flex: 1;
+        text-align: left;
+        padding-left: 7px;
+      }
+
       main.invalid form textarea {
         background: #ffebee;
         border: 1px solid #ef5350;
@@ -112,11 +123,11 @@
       <ul>
         <li>
           Use multiple words and spaces between them. At least 5 words
-          and min. 20 symbols.
+          and min. 20 symbols recommended.
         </li>
         <li>
           Use the secret phrase which is known only for you. If
-          someone else will try the same phase they will have the
+          someone else will try the same phrase they will have the
           access to your key.
         </li>
         <li>
@@ -129,8 +140,12 @@
         </li>
         <li>
           Don't use the following characters:
-          <code id="blockedCharactersUI">. , - / ' "</code>
+          <code id="blockedCharactersUI"></code>
           because they are easy to forget.
+        </li>
+        <li>
+          Open browser in Incognito Mode to have all extensions
+          disabled.
         </li>
         <li>
           Key generation happens on your device. No data is sent over
@@ -145,9 +160,19 @@
         <textarea
           id="phrase"
           rows="7"
-          placeholder="Type your secret phase here"
+          placeholder="Type your secret phrase here"
           onkeyup="generate()"
         ></textarea>
+        <div class="panel">
+          <div class="info">
+            <code id="info"> length 0, words 0 </code>
+            <code id="level"></code>
+          </div>
+
+          <button type="button" onclick="generate(true)">
+            Generate
+          </button>
+        </div>
       </form>
 
       <pre id="result"></pre>
@@ -172,7 +197,7 @@
       <footer>
         2022 ©
         <a
-          href="https://etherscan.io/enslookup-search?search=ezeki.eth"
+          href="https://app.ens.domains/name/ezeki.eth/details"
           target="_blank"
         >
           ezeki.eth
@@ -188,14 +213,22 @@
         '-',
         '|',
         '/',
+        '\\',
         "'",
         '"',
+        ';',
+        ':',
+        '(',
+        ')',
+        '!',
+        '[',
+        ']',
       ]
 
       document.getElementById('blockedCharactersUI').innerHTML =
         blockedCharacters.join(' ')
 
-      function generate() {
+      function generate(showResults) {
         const data = document.getElementById('phrase').value
         const rootEl = document.getElementById('root')
 
@@ -205,23 +238,48 @@
           rootEl.classList = 'invalid'
 
           document.getElementById('result').innerHTML = `
-      WRONG CHARACTER IN THE PHRASE
+            WRONG CHARACTER IN THE PHRASE
 
 
-              `
+                    `
 
           return
         }
 
         const words = data ? data.split(' ').length : 0
-        const result =
-          data?.length >= 20 && words >= 5 ? getWallet(data) : null
+
+        const level = !data
+          ? '~'
+          : data.length >= 20 && words >= 5
+          ? 'GOOD'
+          : 'WEAK'
+
+        document.getElementById(
+          'info',
+        ).innerHTML = ` characters ${data.length}, words ${words}`
+
+        document.getElementById('level').innerHTML = level
+
+        if (!showResults) {
+          document.getElementById('result').innerHTML = `
+
+
+
+                    `
+          return
+        }
+
+        if (!data) {
+          return
+        }
+
+        const result = getWallet(data)
 
         document.getElementById('result').innerHTML = `
-Secret Phrase: "${data}" (length ${data.length}, words ${words})
-Private Key: ${result?.privateKey ?? ''}
-Address: ${result?.address ?? ''}
-              `
+      Secret Phrase: "${data}"
+      Private Key: ${result?.privateKey ?? ''}
+      Address: ${result?.address ?? ''}
+                    `
         console.log('submit happened', data, data.length, this)
       }
 
