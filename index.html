@@ -79,6 +79,7 @@
         background: #dcedc8;
         cursor: pointer;
         transition: 100ms linear;
+        color: #1b5e20;
       }
 
       form button:hover {
@@ -155,7 +156,8 @@
         <li>
           Don't use the following characters:
           <code id="blockedCharactersUI"></code>
-          because they are easy to forget.
+          because they are easy to forget. Also don't use double
+          space.
         </li>
         <li>
           Open browser in Incognito Mode to have all extensions
@@ -229,6 +231,7 @@
         '/',
         '\\',
         "'",
+        '`',
         '"',
         ';',
         ':',
@@ -248,7 +251,10 @@
 
         rootEl.classList = ''
 
-        if (blockedCharacters.some(x => data.includes(x))) {
+        if (
+          blockedCharacters.some(x => data.includes(x)) ||
+          data.includes('  ')
+        ) {
           rootEl.classList = 'invalid'
 
           document.getElementById('result').innerHTML = `
@@ -270,7 +276,7 @@
 
         document.getElementById(
           'info',
-        ).innerHTML = ` characters ${data.length}, words ${words}`
+        ).innerHTML = ` symbols ${data.length}, words ${words}`
 
         document.getElementById('level').innerHTML = level
 
