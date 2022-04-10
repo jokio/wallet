@@ -7,9 +7,23 @@
       content="width=device-width, initial-scale=1.0"
     />
 
-    <script src="lib/ethers-v5.6.2.umd.js"></script>
-
     <title>Wallet - Crypto Wallet done right</title>
+
+    <meta
+      property="og:title"
+      content="The Most Secured Wallet - 🧠"
+    />
+    <meta
+      property="og:description"
+      content="Convert your secret phrase 🤐 to the Private Key 🔑."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="keywords"
+      content="wallet, web3, crypto, secret, decentralised"
+    />
+
+    <script src="lib/ethers-v5.6.2.umd.js"></script>
 
     <style>
       main {
@@ -276,9 +290,9 @@
         const result = getWallet(data)
 
         document.getElementById('result').innerHTML = `
-      Secret Phrase: "${data}"
-      Private Key: ${result?.privateKey ?? ''}
-      Address: ${result?.address ?? ''}
+Secret Phrase: "${data}"
+Private Key: ${result?.privateKey ?? ''}
+Address: ${result?.address ?? ''}
                     `
         console.log('submit happened', data, data.length, this)
       }
