@@ -5,6 +5,10 @@ export function getWallet(text: string) {
     throw new Error('Please provide text')
   }
 
+  if (['.', ',', '-', '_', "'", '"'].some(x => text.includes(x))) {
+    throw new Error('Please use only words and spaces ')
+  }
+
   try {
     const n = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(text))
 
