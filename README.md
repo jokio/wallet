@@ -16,12 +16,14 @@ deno run https://deno.land/x/wallet@v1.2.2/run.ts "it supports emoji ✌🏻"
 deno run https://deno.land/x/wallet@v1.2.2/run.ts "it supports unicode - გამარჯობა"
 ```
 
-You can use the UI:
+## You can use the UI as well
 
-Hosted on Github:
+### Hosted on Github:
+
 https://wallet.jok.land
 
-Hosted on IPFS:
+### Hosted on IPFS:
+
 ipfs://QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK
 ipfs://QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK
 https://ipfs.io/ipfs/QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK
