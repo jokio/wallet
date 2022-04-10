@@ -26,5 +26,6 @@ https://wallet.jok.land
 
 ipfs://QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK
 https://ipfs.io/ipfs/QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK
+https://bafybeievx5dfmnyigxvbv2srldufv26wno25wldlwvj2sdfh2kro6iangq.ipfs.dweb.link/
 
 Please pin the version (`QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK`) if you will find it useful.
