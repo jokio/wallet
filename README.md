@@ -25,7 +25,6 @@ https://wallet.jok.land
 ### Hosted on IPFS:
 
 ipfs://QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK
-ipfs://QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK
 https://ipfs.io/ipfs/QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK
 
 Please pin the version (`QmYRCcxqxHHVeZDDXe2UqVd7778hUYHU47DXiRP1j4oJUK`) if you will find it useful.
